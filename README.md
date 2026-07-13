@@ -1,152 +1,172 @@
-## Nombre del juego
+# ***G4 - TicTacToe***
 
-# ***G4-TicTacToe***
+Proyecto desarrollado en **C++**. El objetivo fue implementar un juego funcional de **Tres en Raya (Tic-Tac-Toe)** aplicando, en un mismo programa, los conceptos aprendidos durante el desarrollo de la asignatura.
 
-## Integrantes:
+## Descripción
 
-   -Federico Proanho
+G4-TicTacToe es una aplicación de consola que reúne tres modalidades de juego diferentes dentro de un único programa:
+
+    - Modo **1 vs 1 (Mejor de 3)**.
+    - Modo **Jugador contra la computadora**.
+    - Modo **Ultimate Tic-Tac-Toe**,.
+
+Además, el programa registra automáticamente los resultados de las partidas en un archivo de historial para conservar los resultados entre ejecuciones.
+
+## Objetivos del proyecto
+
+El propósito principal del proyecto fue integrar en un solo programa los conocimientos adquiridos durante el curso de Programación, tales como:
+
+    - Uso de funciones.
+    - Estructuras (`struct`).
+    - Vectores (`vector`).
+    - Manejo de archivos.
+    - Modularización del código.
+    - Uso de parámetros por referencia.
+    - Condicionales.
+    - Ciclos repetitivos.
+    - Generación de números aleatorios.
+    - Organización del programa mediante procedimientos.
+
+Más que desarrollar únicamente un juego, el proyecto busca demostrar la aplicación conjunta de diferentes herramientas del lenguaje C++.
+
+## Características
+
+    - Menú principal interactivo.
+    - Tres modos de juego diferentes.
+    - Selección aleatoria del jugador inicial.
+    - Sistema "Mejor de 3" para partidas entre jugadores.
+    - Modo contra la computadora.
+    - Implementación de Ultimate Tic-Tac-Toe.
+    - Registro automático del historial de partidas.
+    - Lectura del historial desde un archivo de texto.
+    - Representación gráfica del tablero mediante caracteres ASCII.
+    - Mensajes de victoria y empate.
+
+## Tecnologías utilizadas
+
+    - Lenguaje **C++**
+    - Biblioteca estándar de C++
+
+Librerías utilizadas:
+
+    - `<iostream>`
+    - `<vector>`
+    - `<fstream>`
+    - `<cstdlib>`
+    - `<ctime>`
+    - `<string>`
+
+## Requisitos
+
+El proyecto puede compilarse con cualquier compilador moderno compatible con C++.
+No requiere instalación de librerías adicionales, ya que únicamente utiliza bibliotecas pertenecientes a la biblioteca estándar de C++.
+
+## Ejecución
+
+    1. Abrir el proyecto.
+    2. Compilar el código.
+    3. Ejecutar el programa.
+    4. Seleccionar el modo de juego desde el menú principal.
+
+Si el archivo **historial.txt** no existe, el programa lo creará automáticamente cuando se registre la primera partida.
+
+## Modos de juego
+
+### 1. Mejor de 3
+
+Dos jugadores compiten en varias rondas.
+
+    - El primer jugador en obtener dos victorias gana la partida.
+    - El turno inicial cambia entre rondas.
+    - El resultado queda almacenado en el historial.
+
+### 2. Ultimate Tic-Tac-Toe
+
+Versión avanzada del Tres en Raya.
+
+Características:
+
+    - El tablero principal está formado por nueve tableros pequeños.
+    - Cada movimiento determina el tablero donde deberá jugar el siguiente jugador.
+    - Cuando un jugador gana un tablero pequeño, conquista esa posición del tablero principal.
+    - El ganador será quien consiga tres tableros consecutivos en el tablero principal.
+
+### 3️. Contra la computadora
+
+Modo para un solo jugador.
+
+Características:
+
+    - La computadora realiza movimientos aleatorios.
+    - Se juega una única partida.
+    - El resultado queda almacenado en el historial.
+
+## Historial de partidas
+
+El programa guarda automáticamente cada partida en el archivo:
+
+```
+historial.txt
+```
+
+Cada registro contiene:
+
+    - Modo de juego
+    - Nombre de los jugadores
+    - Cantidad de victorias obtenidas
+
+Mientras el archivo exista, el historial podrá consultarse desde el menú principal.
+
+## Funcionamiento del programa
+
+El código se encuentra dividido en cuatro grandes secciones.
+
+### 1. Estructuras y manejo de archivos
+
+Se define la estructura `Jugador`, encargada de almacenar el nombres, el símbolo y el número de victorias.
+También se implementan funciones para guardar y leer el historial de partidas utilizando archivos de texto.
+
+### 2. Procedimientos auxiliares
+
+Incluye funciones encargadas de:
+
+    - Verificar si existe un ganador
+    - Comprobar si el tablero está lleno
+    - Imprimir el tablero
+    - Mostrar arte ASCII para representar al ganador
+
+### 3. Lógica del juego
+
+Se implementan las reglas correspondientes a:
+
+    - Partidas normales
+    - Partidas contra la computadora
+    - Ultimate Tic-Tac-Toe
+
+También se controla:
+
+    - Cambio de turnos
+    - Validación de movimientos
+    - Conteo de victorias
+    - Detección de empates
+
+### 4. Menú principal
+
+El programa inicia mostrando un menú desde el cual el usuario puede acceder a cualquiera de los modos de juego o consultar el historial de partidas.
+
+## Autores
+
+**Grupo 4**
+    
     -Francis Alcarraz
     -Josthin Moreira
+    -Federico Proaño
     -Jorge Shuguli
 
-## Descripción de la Lógica
+## Concluciones
 
-El programa implementa el juego “Tres en Raya” utilizando una matriz de 3x3 almacenada mediante un **vector** bidimensional de tipo **char**. Cada posición de la matriz representa una casilla del tablero, inicialmente marcada con el carácter **'-'**, el cual indica que el espacio está vacío.
+    1. El desarrollo de G4-TicTacToe permitió integrar en una sola aplicación diversos conceptos fundamentales de programación en C++, como el uso de funciones, estructuras, vectores, manejo de archivos, condicionales y ciclos. Esto demostró la importancia de combinar diferentes herramientas para construir un programa funcional y organizado.
 
-El funcionamiento principal del juego se basa en un bucle **do-while**, el cual mantiene la ejecución activa hasta que ocurra una de las siguientes condiciones:
-
-   - Un jugador complete una línea ganadora.
-    - El tablero se llene completamente, produciendo un empate.
-
-La variable **turno** se utiliza para controlar qué jugador debe participar. Mediante la condición **turno % 2 == 0**, el programa determina cuándo juega el jugador **O**; en caso contrario, juega **X**.
-
-Durante cada iteración del bucle:
-
-   1. El jugador ingresa la fila y la columna donde desea colocar su símbolo.
-    2. El programa verifica si el movimiento es válido mediante una estructura **if**, comprobando:
-        - Que la fila y columna estén dentro del rango **0-2**;
-        - Que la casilla seleccionada no esté ocupada.
-    3. Si el movimiento es inválido, se muestra un mensaje de error y se utiliza **continue** para reiniciar el turno actual.
-    4. Si el movimiento es válido, se coloca el símbolo correspondiente (**X** u **O**) dentro de la matriz.
-    5. El tablero se vuelve a imprimir mostrando el estado actualizado del juego.
-
-La condición del **do-while** contiene varias expresiones lógicas encargadas de detectar si existe una victoria. Estas condiciones revisan:
-
-   - Las 3 filas,
-    - Las 3 columnas,
-    - La diagonal principal,
-    - La diagonal secundaria.
-
-Si alguna de estas conbinaciones contiene tres símbolos iguales y distintos de **'-'**, el juego finaliza.
-
-Finalmente, una vez terminado el bucle, el programa utiliza estructuras **if**, **else if** y **else** para determinar el resultado final:
-
-   - Mostrar el mensaje de victoria para **X**,
-    - Mostrar el mensaje de victoria para **O**,
-    - O declarar un empate mediante la función **empate()**.
-
-## Uso de estructuras
-
-### Control de turnos
-
-Para determinar qué jugador participa en cada turno, se utiliza la estructura:
-
-    if (turno % 2 == 0)
-
-Donde:
-- Si el turno es par, juega **O**.
-- Si el turno es impar, juega **X**.
-
-Esto permite alternar automáticamente entre ambos jugadores durante toda la partida.
-
-### Validación de movimientos
-
-El programa utiliza una condición **if** para comprobar si un movimiento es válido:
-
-    if (i < 0 || i > 2 || j < 0 || j > 2 || matriz[i][j] != '-')
-
-Esta estructura verifica:
-
-- Que las coordenadas ingresadas estén dentro del tablero;
-- Que la casilla elegida esté vacía.
-
-Si alguna condición no se cumple:
-
-- Se muestra un mensaje de error;
-- Se utiliza **continue** para repetir el turno.
-
-### Determinación del ganador
-
-Al finalizar el bucle principal, el programa utiliza estructuras **if** y **else if** para determinar quién ganó:
-
-    if (turno % 2 != 0)
-
-o
-
-    else if (turno % 2 == 0)
-
-Dependiendo del valor del turno, se llama a:
-
-- **ganarX()**;
-- **ganarO()**;
-
-### Detección de empate
-
-El programa utiliza una estructura **else** para determinar cuándo no existe un ganador y el tablero está lleno:
-
-    else
-    {
-        empate();
-    }
-
-Esto ocurre cuando se alcanza el turno 10 y ninguna condición de victoria se cumple.
-
-### Uso de bucles
-
-El programa utiliza principalmente un bucle **do-while** como estructura principal de repetición.
-
-    do
-    {
-       ...
-    } while (...);
-
-Este bucle permite que el juego continúe ejecutándose hasta que exista una combinación ganadora o se alcance el límite máximo de turnos.
-
-El uso de **do-while** es importante porque garantiza que el juego se ejecute al menos una vez antes de comprobar la condición de finalización.
-
-### Uso de estructuras anidadas
-
-Se emplea una estructura condicional anidada en la comprobación del resultado final:
-
-    if (turno == 10)
-    {
-        if (condicion_de_victoria)
-        {
-            ...
-        }
-        else
-        {
-            empate();
-        }
-    }
-
-Aquí, un **if** se encuentra dentro de otro **if** para diferenciar entre:
-
-- Una victoria conseguida en el último turno;
-- Un empate verdadero.
-
-## Conclusiones
-
-# Conclusiones
-
-- Como conclusión, desarrollar este proyecto permitió aplicar conceptos fundamentales de programación en C++, especialmente el uso de estructuras condicionales, estructuras repetitivas y vectores bidimensionales para representar un tablero de juego.
-
-- Al programar este juego, “Tres en Raya”, se logró comprender cómo controlar el flujo de un programa utilizando un bucle principal encargado de mantener la ejecución hasta que exista un ganador o un empate.
-
-- Usar condicionees lógicas permitió validar movimientos, controlar turnos y detectar automáticamente combinaciones ganadoras en filas, columnas y diagonales.
-
-- El proyecto ayudó a fortalecer la lógica de programación al organizar correctamente las reglas del juego y gestionar diferentes escenarios posibles durante la partida.
-
-- Aunque el código puede optimizarse y simplificarse en algunos apartados, el programa cumple correctamente con la funcionalidad principal del juego y demuestra una aplicación práctica de los temas estudiados.
-
-- Finalmente, el trabajo permitió adquirir una mejor comprensión sobre la importancia de estructurar adecuadamente un programa y mantener una lógica clara para facilitar futuras mejoras o ampliaciones.
+    2. La implementación de varios modos de juego, representó un desafío que fortaleció las habilidades de análisis, planificación y resolución de problemas. Además, evidenció cómo una correcta modularización del código facilita el mantenimiento, la reutilización de funciones y la comprensión del programa.
+    
+    3. Finalmente, este proyecto permitió reforzar el trabajo colaborativo y la aplicación práctica de los conocimientos adquiridos durante el curso, que sienta asi una base sólida para el desarrollo de proyectos más complejos en el futuro y motivando la incorporación de nuevas funcionalidades y mejoras.
